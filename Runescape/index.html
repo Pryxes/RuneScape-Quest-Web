@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MyQuestAdventure</title>
+
+    <script type="text/javascript" src="node_modules/vis/dist/vis.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    
+    <script src="index.js"></script>
+
+    <link href="node_modules/vis/dist/vis-network.min.css" rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+        #network {
+          width: 58%;
+          height: 850px;
+          border: 5px solid lightgray;
+          background: #222222;
+          display: inline-block;
+        }
+        #networkSub {
+          width: 38%;
+          height: 850px;
+          border: 5px solid lightgray;
+          background: #222222;
+          display: inline-block;
+        }
+        div {
+          margin: 0;
+          padding: 0;
+          border: 0;
+        }
+      </style>
+</head>
+
+<body>
+  <div>
+    <div id="network">
+    </div>
+    
+    <div id="networkSub">
+    </div>
+  </div>
+    <script language="javascript">
+      $.ajax({
+            type: "GET",
+            url: "http://localhost/runescape/playerLevels.csv",
+            success: function (data) {
+              insertPlayerLevels(data);
+            }
+        });
+      
+        $.ajax({
+            type: "GET",
+            url: "http://localhost/runescape/playerDoneQuests.csv",
+            success: function (data) {
+              insertPlayerData(data);
+            }
+        });
+        $.ajax({
+            type: "GET",
+            url: "http://localhost/runescape/runescapeQuests.csv",
+            success: function (data) {
+              setup(data);
+            }
+        });
+        
+    </script>
+
+</body>
+
+
+
+<footer>
+
+</footer>
+</html>
